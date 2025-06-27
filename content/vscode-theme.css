@@ -1,0 +1,571 @@
+/* VS Tweet Theme - VSCode Dark+ 主题样式 */
+
+/* 全局变量定义 */
+:root {
+  --vscode-bg: #1e1e1e;
+  --vscode-sidebar-bg: #252526;
+  --vscode-editor-bg: #1e1e1e;
+  --vscode-statusbar-bg: #007acc;
+  --vscode-text: #d4d4d4;
+  --vscode-text-muted: #969696;
+  --vscode-border: #3e3e42;
+  --vscode-accent: #007acc;
+  --vscode-comment: #6a9955;
+  --vscode-keyword: #569cd6;
+  --vscode-string: #ce9178;
+  --vscode-function: #dcdcaa;
+  --vscode-variable: #9cdcfe;
+}
+
+/* 插件激活时的样式 */
+.vs-tweet-theme-active body {
+  background-color: var(--vscode-bg) !important;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  color: var(--vscode-text) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 隐藏Twitter原生导航和侧边栏 */
+.vs-tweet-theme-active [data-testid="sidebarColumn"],
+.vs-tweet-theme-active [data-testid="rightSidebar"],
+.vs-tweet-theme-active [aria-label="搜索和探索"],
+.vs-tweet-theme-active [aria-label="推荐关注"],
+.vs-tweet-theme-active [data-testid="primaryColumn"] > div:first-child,
+.vs-tweet-theme-active header[role="banner"],
+.vs-tweet-theme-active nav[role="navigation"]:not(.vs-custom-nav),
+.vs-tweet-theme-active [data-testid="AppTabBar"],
+.vs-tweet-theme-active [data-testid="primaryNavigation"],
+.vs-tweet-theme-active aside[aria-label*="推荐"],
+.vs-tweet-theme-active aside[aria-label*="搜索"],
+.vs-tweet-theme-active div[data-testid="sidebarColumn"],
+.vs-tweet-theme-active section[aria-labelledby*="accessible-list"],
+.vs-tweet-theme-active aside[role="complementary"],
+.vs-tweet-theme-active div[data-testid="primaryColumn"] + div,
+.vs-tweet-theme-active div[data-testid="primaryColumn"] ~ div,
+.vs-tweet-theme-active main[role="main"] > div > div > div:last-child:not([data-testid="primaryColumn"]) {
+  display: none !important;
+}
+
+/* 主容器布局 */
+.vs-tweet-theme-active [data-testid="primaryColumn"],
+.vs-tweet-theme-active main[role="main"] {
+  background-color: var(--vscode-editor-bg) !important;
+  border: none !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 创建VSCode布局结构 */
+.vs-tweet-theme-active body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--vscode-sidebar-bg);
+  border-right: 1px solid var(--vscode-border);
+  z-index: 9999;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* VSCode侧边栏内容 */
+.vs-tweet-theme-active body::after {
+  content: '📁 EXPLORER\A\A📂 TWITTER-FEED\A  📂 src\A    📄 twitter-feed.js ●\A    📄 user-timeline.ts\A    📄 trending.json\A    📄 notifications.py\A  📂 components\A    📄 Tweet.jsx\A    📄 Timeline.tsx\A    📄 UserCard.tsx\A  📂 utils\A    📄 api.js\A    📄 helpers.ts\A  📂 styles\A    📄 theme.css ●\A\A🔍 SEARCH\A\A📋 SOURCE CONTROL (GIT)\A  Changes (2)\A  M  twitter-feed.js\A  M  theme.css\A\A🐛 RUN AND DEBUG\A\A🧩 EXTENSIONS\A  ✓ ES7+ React/Redux\A  ✓ Prettier\A  ✓ GitLens';
+  position: fixed;
+  top: 35px;
+  left: 8px;
+  width: 284px;
+  color: var(--vscode-text);
+  font-family: 'Segoe UI', 'system-ui', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: pre-line;
+  z-index: 10000;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: calc(100vh - 60px);
+}
+
+  /* VSCode顶部标题栏 */
+  .vs-tweet-theme-active::before {
+    content: '● twitter-feed.js - VS Tweet Theme - Visual Studio Code';
+    position: fixed;
+    top: 0;
+    left: 300px;
+    right: 0;
+    height: 35px;
+    background-color: var(--vscode-bg);
+    border-bottom: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    font-family: 'Segoe UI', 'system-ui', sans-serif;
+    font-size: 12px;
+    line-height: 35px;
+    padding-left: 15px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+  }
+
+  /* VSCode底部状态栏 */
+  .vs-tweet-theme-active::after {
+    content: '🌐 Live Server: Port 3000  📍 Ln 42, Col 16  🔧 JavaScript  ✓ Git: main  🔔 0 Problems  🚀 Ready';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background-color: var(--vscode-statusbar-bg);
+    color: white;
+    font-family: 'Segoe UI', 'system-ui', sans-serif;
+    font-size: 11px;
+    line-height: 25px;
+    padding: 0 15px;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 主内容区域调整 */
+  [data-testid="primaryColumn"] {
+    margin-left: 300px !important;
+    margin-top: 35px !important;
+    margin-bottom: 25px !important;
+    padding: 20px !important;
+    background-color: var(--vscode-editor-bg) !important;
+  }
+
+  /* 推文容器样式 */
+  article[data-testid="tweet"] {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--vscode-border) !important;
+    margin: 0 0 15px 0 !important;
+    padding: 10px 0 !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+  }
+
+  /* 推文内容转换为代码注释风格 */
+  [data-testid="tweetText"] {
+    color: var(--vscode-comment) !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  [data-testid="tweetText"]::before {
+    content: '// ';
+    color: var(--vscode-comment) !important;
+  }
+
+  /* 用户名样式 - 模拟函数名 */
+  [data-testid="User-Name"] a {
+    color: var(--vscode-function) !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+  }
+
+  [data-testid="User-Name"] a::before {
+    content: 'function ';
+    color: var(--vscode-keyword) !important;
+  }
+
+  [data-testid="User-Name"] a::after {
+    content: '() {';
+    color: var(--vscode-text) !important;
+  }
+
+  /* 用户句柄样式 */
+  [data-testid="User-Name"] span:last-child {
+    color: var(--vscode-text-muted) !important;
+    font-size: 12px !important;
+  }
+
+  /* 时间戳样式 - 模拟行号 */
+  time {
+    color: var(--vscode-text-muted) !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 12px !important;
+  }
+
+  time::before {
+    content: 'Line ';
+    color: var(--vscode-text-muted) !important;
+  }
+
+  /* 隐藏/最小化媒体内容 */
+  [data-testid="tweetPhoto"],
+  [data-testid="videoPlayer"],
+  [data-testid="tweetVideo"] {
+    display: none !important;
+  }
+
+  /* 媒体占位符 */
+  [data-testid="tweetPhoto"]::after,
+  [data-testid="videoPlayer"]::after,
+  [data-testid="tweetVideo"]::after {
+    content: '📎 media-attachment.jpg';
+    display: block !important;
+    color: var(--vscode-string) !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 12px !important;
+    padding: 5px 0 !important;
+    border-left: 3px solid var(--vscode-accent) !important;
+    padding-left: 10px !important;
+    margin: 5px 0 !important;
+  }
+
+  /* 互动按钮样式 - 模拟代码折叠 */
+  [data-testid="reply"],
+  [data-testid="retweet"],
+  [data-testid="like"],
+  [data-testid="bookmark"] {
+    opacity: 0.3 !important;
+    filter: grayscale(100%) !important;
+  }
+
+  [data-testid="reply"]:hover,
+  [data-testid="retweet"]:hover,
+  [data-testid="like"]:hover,
+  [data-testid="bookmark"]:hover {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* 推广内容完全隐藏 */
+  [data-testid="placementTracking"],
+  [aria-label*="Promoted"],
+  [data-testid="tweetEngagements"] {
+    display: none !important;
+  }
+
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--vscode-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--vscode-border);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--vscode-text-muted);
+  }
+
+  /* 代码行号效果 */
+  article[data-testid="tweet"] {
+    counter-increment: line-number;
+    position: relative;
+  }
+
+  article[data-testid="tweet"]::before {
+    content: counter(line-number);
+    position: absolute;
+    left: -40px;
+    top: 10px;
+    color: var(--vscode-text-muted);
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 12px;
+    width: 30px;
+    text-align: right;
+  }
+
+  /* 重置计数器 */
+  [data-testid="primaryColumn"] {
+    counter-reset: line-number;
+  }
+
+
+/* 悬停显示原始内容的样式 */
+.vs-tweet-hover-preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 500px;
+  max-height: 400px;
+  overflow: auto;
+  z-index: 99999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* 切换按钮样式 */
+.vs-tweet-toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: var(--vscode-accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 99999;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+}
+
+/* VSCode文件浏览器样式 - 左侧导航 */
+.vscode-theme header[role="banner"] {
+    background: var(--vscode-sideBar-background) !important;
+    border-right: 1px solid var(--vscode-sideBar-border) !important;
+}
+
+/* 左侧导航链接 - VSCode文件样式 */
+.vscode-theme nav[aria-label="主要"] a,
+.vscode-theme nav[role="navigation"] a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 4px 8px !important;
+    margin: 1px 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--vscode-sideBar-foreground) !important;
+    font-family: var(--vscode-font-family) !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    transition: background-color 0.1s ease !important;
+    border: none !important;
+    min-height: 22px !important;
+}
+
+.vscode-theme nav[aria-label="主要"] a:hover,
+.vscode-theme nav[role="navigation"] a:hover {
+    background: var(--vscode-list-hoverBackground) !important;
+    color: var(--vscode-list-hoverForeground) !important;
+}
+
+.vscode-theme nav[aria-label="主要"] a[aria-current="page"],
+.vscode-theme nav[role="navigation"] a[aria-current="page"] {
+    background: var(--vscode-list-activeSelectionBackground) !important;
+    color: var(--vscode-list-activeSelectionForeground) !important;
+}
+
+/* 隐藏原有的Twitter图标 */
+.vscode-theme nav[aria-label="主要"] svg,
+.vscode-theme nav[role="navigation"] svg {
+    display: none !important;
+}
+
+/* 为导航项添加文件图标 */
+.vscode-theme nav[aria-label="主要"] a::before,
+.vscode-theme nav[role="navigation"] a::before {
+    content: "📄" !important;
+    margin-right: 6px !important;
+    font-size: 12px !important;
+}
+
+/* 特定页面的图标 */
+.vscode-theme a[data-testid="AppTabBar_Home_Link"]::before {
+    content: "🏠" !important;
+}
+
+.vscode-theme a[data-testid="AppTabBar_Explore_Link"]::before {
+    content: "🔍" !important;
+}
+
+.vscode-theme a[data-testid="AppTabBar_Notifications_Link"]::before {
+    content: "🔔" !important;
+}
+
+.vscode-theme a[data-testid="AppTabBar_DirectMessage_Link"]::before {
+    content: "💬" !important;
+}
+
+.vscode-theme a[data-testid="AppTabBar_Profile_Link"]::before {
+    content: "👤" !important;
+}
+
+.vscode-theme a[href="/i/bookmarks"]::before {
+    content: "🔖" !important;
+}
+
+.vscode-theme a[href="/i/grok"]::before {
+    content: "🤖" !important;
+}
+
+.vscode-theme a[href*="/communities"]::before {
+    content: "👥" !important;
+}
+
+.vscode-theme a[data-testid="premium-signup-tab"]::before {
+    content: "⭐" !important;
+}
+
+.vscode-theme a[data-testid="vo-signup-tab"]::before {
+    content: "✅" !important;
+}
+
+/* 导航文本样式 */
+.vscode-theme nav[aria-label="主要"] a span,
+.vscode-theme nav[role="navigation"] a span {
+    color: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+}
+
+/* 隐藏未读通知数量圆点，用文本显示 */
+.vscode-theme nav[aria-label="主要"] a div[aria-label*="未读"],
+.vscode-theme nav[role="navigation"] a div[aria-label*="未读"] {
+    background: var(--vscode-badge-background) !important;
+    color: var(--vscode-badge-foreground) !important;
+    border-radius: 2px !important;
+    padding: 0 4px !important;
+    font-size: 10px !important;
+    margin-left: 4px !important;
+    min-width: auto !important;
+    height: auto !important;
+}
+
+/* 发帖按钮样式 */
+.vscode-theme a[data-testid="SideNav_NewTweet_Button"] {
+    background: var(--vscode-button-background) !important;
+    color: var(--vscode-button-foreground) !important;
+    border: 1px solid var(--vscode-button-border) !important;
+    border-radius: 2px !important;
+    padding: 6px 12px !important;
+    margin: 8px !important;
+    font-size: 13px !important;
+}
+
+.vscode-theme a[data-testid="SideNav_NewTweet_Button"]:hover {
+    background: var(--vscode-button-hoverBackground) !important;
+}
+
+/* 用户信息区域 */
+.vscode-theme button[data-testid="SideNav_AccountSwitcher_Button"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 8px !important;
+    border-radius: 0 !important;
+}
+
+.vscode-theme button[data-testid="SideNav_AccountSwitcher_Button"]:hover {
+    background: var(--vscode-list-hoverBackground) !important;
+}
+
+/* 隐藏右侧所有内容 */
+.vscode-theme div[class*="r-vacyoi"][class*="r-ttdzmv"],
+.vscode-theme div[class*="r-vacyoi r-ttdzmv"] {
+    display: none !important;
+}
+
+/* 确保主内容区域扩展到全宽 */
+.vscode-theme main[role="main"] {
+    max-width: none !important;
+    margin-right: 0 !important;
+}
+
+/* 媒体悬停显示样式 */
+.vscode-theme .media-placeholder {
+    position: relative !important;
+    background: var(--vscode-editor-background) !important;
+    border: 1px dashed var(--vscode-editorWidget-border) !important;
+    border-radius: 4px !important;
+    padding: 20px !important;
+    text-align: center !important;
+    color: var(--vscode-descriptionForeground) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.vscode-theme .media-placeholder:hover {
+    background: var(--vscode-list-hoverBackground) !important;
+    border-color: var(--vscode-focusBorder) !important;
+}
+
+.vscode-theme .media-placeholder::before {
+    content: "🖼️ 悬停查看媒体内容" !important;
+    font-size: 14px !important;
+}
+
+.vscode-theme .media-placeholder.video::before {
+    content: "🎥 悬停查看视频内容" !important;
+}
+
+/* 媒体内容悬停显示 */
+.vscode-theme .media-hover-container {
+    position: relative !important;
+}
+
+.vscode-theme .media-hover-content {
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    background: var(--vscode-editor-background) !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+}
+
+.vscode-theme .media-hover-container:hover .media-hover-content {
+    opacity: 1 !important;
+}
+
+.vscode-theme .media-hover-container:hover .media-placeholder {
+    opacity: 0 !important;
+}
+
+/* 调整布局以适应隐藏的右侧栏 */
+.vscode-theme div[data-testid="primaryColumn"] {
+    max-width: none !important;
+    flex: 1 !important;
+}
+
+/* 隐藏其他右侧相关元素 */
+.vscode-theme aside[aria-label="推荐关注"],
+.vscode-theme aside[aria-label*="推荐"],
+.vscode-theme aside[aria-label*="搜索"],
+.vscode-theme section[aria-labelledby*="accessible-list"],
+.vscode-theme nav[aria-label="页脚"],
+.vscode-theme div[class*="r-1kqtdi0"][class*="r-1867qdf"],
+.vscode-theme [data-testid="sidebarColumn"],
+.vscode-theme [data-testid="rightSidebar"],
+.vscode-theme aside[role="complementary"],
+.vscode-theme div[aria-label*="时间线"]:not([data-testid="primaryColumn"]),
+.vscode-theme section[aria-labelledby]:not([data-testid="primaryColumn"] section) {
+    display: none !important;
+}
+
+/* 搜索框隐藏 */
+.vscode-theme form[role="search"],
+.vscode-theme div[data-testid="SearchBox_Search_Input_label"] {
+    display: none !important;
+}
+
+/* 更多菜单按钮样式优化 */
+.vscode-theme button[data-testid="AppTabBar_More_Menu"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 4px 8px !important;
+    border-radius: 0 !important;
+    color: var(--vscode-sideBar-foreground) !important;
+}
+
+.vscode-theme button[data-testid="AppTabBar_More_Menu"]:hover {
+    background: var(--vscode-list-hoverBackground) !important;
+}
+
+.vscode-theme button[data-testid="AppTabBar_More_Menu"]::before {
+    content: "⋯" !important;
+    margin-right: 6px !important;
+    font-size: 12px !important;
+} 

@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "VS Tweet Theme - Twitter伪装VSCode",
+  "version": "1.1.0",
+  "description": "将Twitter界面伪装成VSCode，隐藏媒体内容，完美摸鱼神器",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "*://twitter.com/*",
+    "*://x.com/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["*://twitter.com/*", "*://x.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/vscode-theme.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "VS Tweet Theme",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  
+  "commands": {
+    "toggle-theme": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+V",
+        "mac": "Command+Shift+V"
+      },
+      "description": "快速切换VSCode主题"
+    },
+    "emergency-switch": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "紧急切换到开发页面"
+    }
+  }
+} 

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VS Tweet Theme</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- 头部 -->
+    <header class="popup-header">
+      <div class="logo">
+        <span class="logo-icon">🎨</span>
+        <h1>VS Tweet Theme</h1>
+      </div>
+      <div class="version">v1.0.0</div>
+    </header>
+
+    <!-- 状态显示 -->
+    <section class="status-section">
+      <div class="status-indicator">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-text" id="statusText">检查中...</span>
+      </div>
+      <button class="toggle-btn" id="toggleBtn">
+        <span class="btn-icon">🔄</span>
+        <span class="btn-text">切换模式</span>
+      </button>
+    </section>
+
+    <!-- 快速操作 -->
+    <section class="quick-actions">
+      <button class="action-btn emergency-btn" id="emergencyBtn">
+        <span class="btn-icon">🚨</span>
+        <span class="btn-text">紧急切换</span>
+      </button>
+      <button class="action-btn preview-btn" id="previewBtn">
+        <span class="btn-icon">👁️</span>
+        <span class="btn-text">预览模式</span>
+      </button>
+    </section>
+
+    <!-- 设置区域 -->
+    <section class="settings-section">
+      <div class="section-header">
+        <h3>⚙️ 设置</h3>
+        <button class="collapse-btn" id="settingsToggle">▼</button>
+      </div>
+      
+      <div class="settings-content" id="settingsContent">
+        <!-- 主题选择 -->
+        <div class="setting-group">
+          <label class="setting-label">VSCode主题</label>
+          <select class="setting-select" id="themeSelect">
+            <option value="dark-plus">Dark+ (默认)</option>
+            <option value="light-plus">Light+</option>
+            <option value="monokai">Monokai</option>
+            <option value="dracula">Dracula</option>
+            <option value="github-dark">GitHub Dark</option>
+          </select>
+        </div>
+
+        <!-- 编程语言 -->
+        <div class="setting-group">
+          <label class="setting-label">模拟语言</label>
+          <select class="setting-select" id="languageSelect">
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="rust">Rust</option>
+          </select>
+        </div>
+
+        <!-- 项目名称 -->
+        <div class="setting-group">
+          <label class="setting-label">项目名称</label>
+          <input type="text" class="setting-input" id="projectNameInput" 
+                 placeholder="twitter-feed" maxlength="20">
+        </div>
+
+        <!-- 媒体处理 -->
+        <div class="setting-group">
+          <label class="setting-label">媒体内容</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="mediaHandling" value="hide" id="mediaHide">
+              <span class="radio-custom"></span>
+              完全隐藏
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="mediaHandling" value="placeholder" id="mediaPlaceholder">
+              <span class="radio-custom"></span>
+              显示占位符
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="mediaHandling" value="thumbnail" id="mediaThumbnail">
+              <span class="radio-custom"></span>
+              小缩略图
+            </label>
+          </div>
+        </div>
+
+        <!-- 功能开关 -->
+        <div class="setting-group">
+          <label class="setting-label">功能选项</label>
+          <div class="switch-group">
+            <label class="switch-label">
+              <input type="checkbox" class="switch-input" id="lineNumbersSwitch">
+              <span class="switch-slider"></span>
+              显示行号
+            </label>
+            <label class="switch-label">
+              <input type="checkbox" class="switch-input" id="hoverPreviewSwitch">
+              <span class="switch-slider"></span>
+              悬停预览
+            </label>
+            <label class="switch-label">
+              <input type="checkbox" class="switch-input" id="syntaxHighlightSwitch">
+              <span class="switch-slider"></span>
+              语法高亮
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 快捷键说明 -->
+    <section class="shortcuts-section">
+      <div class="section-header">
+        <h3>⌨️ 快捷键</h3>
+        <button class="collapse-btn" id="shortcutsToggle">▼</button>
+      </div>
+      
+      <div class="shortcuts-content" id="shortcutsContent">
+        <div class="shortcut-item">
+          <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd>
+          <span>切换VSCode模式</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>
+          <span>紧急切换页面</span>
+        </div>
+        <div class="shortcut-item">
+          <kbd>Alt</kbd> + <kbd>H</kbd>
+          <span>切换悬停预览</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部信息 -->
+    <footer class="popup-footer">
+      <div class="footer-links">
+        <a href="#" class="footer-link" id="helpLink">帮助</a>
+        <a href="#" class="footer-link" id="feedbackLink">反馈</a>
+        <a href="#" class="footer-link" id="githubLink">GitHub</a>
+      </div>
+      <div class="footer-text">
+        让摸鱼更专业 😎
+      </div>
+    </footer>
+  </div>
+
+  <!-- 加载中遮罩 -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">加载中...</div>
+  </div>
+
+  <!-- 通知消息 -->
+  <div class="notification" id="notification">
+    <div class="notification-content">
+      <span class="notification-icon"></span>
+      <span class="notification-message"></span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html> 

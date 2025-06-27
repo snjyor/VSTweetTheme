@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Tweet Theme 测试页面</title>
+    <link rel="stylesheet" href="../content/vscode-theme.css">
+    <style>
+        /* 模拟Twitter的基本结构 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .twitter-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .left-nav {
+            width: 275px;
+            background: #fff;
+            border-right: 1px solid #eee;
+            padding: 20px;
+        }
+        
+        .main-content {
+            flex: 1;
+            max-width: 600px;
+            border-right: 1px solid #eee;
+        }
+        
+        .right-sidebar {
+            width: 350px;
+            background: #f7f9fa;
+            padding: 20px;
+        }
+        
+        .tweet {
+            border-bottom: 1px solid #eee;
+            padding: 15px;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            color: #1d9bf0;
+        }
+        
+        .user-handle {
+            color: #536471;
+            margin-left: 5px;
+        }
+        
+        .tweet-text {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        
+        .tweet-time {
+            color: #536471;
+            font-size: 14px;
+        }
+        
+        .media-content {
+            margin: 10px 0;
+            background: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        
+        .toggle-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10001;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-controls">
+        <button onclick="toggleVSCodeTheme()">切换VSCode主题</button>
+        <button onclick="testHideRightSidebar()">隐藏右侧栏</button>
+        <button onclick="resetLayout()">重置布局</button>
+    </div>
+
+    <div class="twitter-layout">
+        <!-- 左侧导航 -->
+        <nav class="left-nav" data-testid="primaryNavigation">
+            <h3>导航菜单</h3>
+            <div>🏠 首页</div>
+            <div>🔍 探索</div>
+            <div>🔔 通知</div>
+            <div>✉️ 消息</div>
+            <div>🔖 书签</div>
+            <div>👤 个人资料</div>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content" data-testid="primaryColumn">
+            <header style="padding: 15px; border-bottom: 1px solid #eee;">
+                <h2>首页</h2>
+            </header>
+            
+            <!-- 推文列表 -->
+            <article class="tweet" data-testid="tweet">
+                <div>
+                    <span class="user-name" data-testid="User-Name">
+                        <a href="#">张三</a>
+                    </span>
+                    <span class="user-handle">@zhangsan</span>
+                    <span class="tweet-time">
+                        <time>2小时前</time>
+                    </span>
+                </div>
+                <div class="tweet-text" data-testid="tweetText">
+                    这是一条测试推文，用来演示VSCode主题的效果。当启用主题后，这条推文应该被转换为代码注释的样式。
+                </div>
+                <div class="media-content" data-testid="tweetPhoto">
+                    📷 图片占位符
+                </div>
+            </article>
+
+            <article class="tweet" data-testid="tweet">
+                <div>
+                    <span class="user-name" data-testid="User-Name">
+                        <a href="#">李四</a>
+                    </span>
+                    <span class="user-handle">@lisi</span>
+                    <span class="tweet-time">
+                        <time>3小时前</time>
+                    </span>
+                </div>
+                <div class="tweet-text" data-testid="tweetText">
+                    另一条测试推文，包含更多内容。这个主题应该让Twitter看起来像一个代码编辑器。
+                </div>
+                <div class="media-content" data-testid="videoPlayer">
+                    🎥 视频占位符
+                </div>
+            </article>
+
+            <article class="tweet" data-testid="tweet">
+                <div>
+                    <span class="user-name" data-testid="User-Name">
+                        <a href="#">王五</a>
+                    </span>
+                    <span class="user-handle">@wangwu</span>
+                    <span class="tweet-time">
+                        <time>5小时前</time>
+                    </span>
+                </div>
+                <div class="tweet-text" data-testid="tweetText">
+                    第三条推文，用于测试行号和代码高亮效果。
+                </div>
+            </article>
+        </main>
+
+        <!-- 右侧栏 -->
+        <aside class="right-sidebar" data-testid="sidebarColumn" aria-label="推荐关注">
+            <div style="background: white; padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                <h3>推荐关注</h3>
+                <div style="margin: 10px 0;">
+                    <div>👤 用户A</div>
+                    <div style="color: #536471; font-size: 14px;">@userA</div>
+                </div>
+                <div style="margin: 10px 0;">
+                    <div>👤 用户B</div>
+                    <div style="color: #536471; font-size: 14px;">@userB</div>
+                </div>
+            </div>
+            
+            <div style="background: white; padding: 15px; border-radius: 12px;">
+                <h3>趋势话题</h3>
+                <div style="margin: 10px 0;">
+                    <div>#话题1</div>
+                    <div style="color: #536471; font-size: 14px;">12.5K 推文</div>
+                </div>
+                <div style="margin: 10px 0;">
+                    <div>#话题2</div>
+                    <div style="color: #536471; font-size: 14px;">8.3K 推文</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        function toggleVSCodeTheme() {
+            document.documentElement.classList.toggle('vs-tweet-theme-active');
+            document.body.classList.toggle('vscode-theme');
+        }
+
+        function testHideRightSidebar() {
+            const rightSidebar = document.querySelector('[data-testid="sidebarColumn"]');
+            if (rightSidebar) {
+                rightSidebar.style.display = rightSidebar.style.display === 'none' ? '' : 'none';
+            }
+        }
+
+        function resetLayout() {
+            document.documentElement.classList.remove('vs-tweet-theme-active');
+            document.body.classList.remove('vscode-theme');
+            const hiddenElements = document.querySelectorAll('[style*="display: none"]');
+            hiddenElements.forEach(el => el.style.display = '');
+        }
+
+        // 模拟content script的功能
+        console.log('VS Tweet Theme 测试页面已加载');
+        console.log('使用按钮来测试主题切换功能');
+    </script>
+</body>
+</html> 

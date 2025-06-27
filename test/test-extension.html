@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Tweet Theme - 扩展测试页面</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #007acc;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        
+        .test-section h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            margin: 10px 0;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #007acc;
+        }
+        
+        .checklist li::before {
+            content: '☐ ';
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #005a9e;
+        }
+        
+        .button.secondary {
+            background: #6c757d;
+        }
+        
+        .button.secondary:hover {
+            background: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 VS Tweet Theme 扩展测试</h1>
+        
+        <div class="info">
+            <strong>📋 测试说明:</strong> 这个页面帮助你验证VS Tweet Theme扩展是否正确安装和配置。请按顺序完成以下测试项目。
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 1. 扩展安装检查</h3>
+            <ul class="checklist">
+                <li>扩展已在Chrome中加载 <span class="status pending">待检查</span></li>
+                <li>扩展图标出现在工具栏 <span class="status pending">待检查</span></li>
+                <li>扩展状态为"已启用" <span class="status pending">待检查</span></li>
+                <li>没有错误提示信息 <span class="status pending">待检查</span></li>
+            </ul>
+            
+            <p><strong>检查方法:</strong></p>
+            <ol>
+                <li>访问 <span class="code">chrome://extensions/</span></li>
+                <li>找到"VS Tweet Theme"扩展</li>
+                <li>确认开关处于开启状态</li>
+                <li>检查是否有错误信息</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🌐 2. Twitter页面测试</h3>
+            <ul class="checklist">
+                <li>能够访问Twitter/X.com <span class="status pending">待测试</span></li>
+                <li>扩展在Twitter页面激活 <span class="status pending">待测试</span></li>
+                <li>弹出面板正常显示 <span class="status pending">待测试</span></li>
+                <li>状态指示器正确显示 <span class="status pending">待测试</span></li>
+            </ul>
+            
+            <p><strong>测试步骤:</strong></p>
+            <ol>
+                <li>打开新标签页访问 <a href="https://twitter.com" target="_blank" class="button">Twitter.com</a> 或 <a href="https://x.com" target="_blank" class="button">X.com</a></li>
+                <li>点击工具栏中的VS Tweet Theme图标</li>
+                <li>检查弹出面板是否正常显示</li>
+                <li>观察状态指示器颜色和文本</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🎨 3. VSCode模式测试</h3>
+            <ul class="checklist">
+                <li>能够启用VSCode模式 <span class="status pending">待测试</span></li>
+                <li>界面成功转换为VSCode风格 <span class="status pending">待测试</span></li>
+                <li>推文显示为代码注释 <span class="status pending">待测试</span></li>
+                <li>媒体内容被正确处理 <span class="status pending">待测试</span></li>
+                <li>能够正常切换回原始界面 <span class="status pending">待测试</span></li>
+            </ul>
+            
+            <p><strong>测试步骤:</strong></p>
+            <ol>
+                <li>在Twitter页面点击"启用VSCode模式"按钮</li>
+                <li>观察页面是否转换为深色主题</li>
+                <li>检查推文是否显示为代码注释格式</li>
+                <li>查看图片/视频是否被隐藏或显示为占位符</li>
+                <li>再次点击按钮确认能够恢复原始界面</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>⌨️ 4. 快捷键测试</h3>
+            <ul class="checklist">
+                <li><span class="code">Ctrl+Shift+V</span> 切换模式 <span class="status pending">待测试</span></li>
+                <li><span class="code">Ctrl+Shift+E</span> 紧急切换 <span class="status pending">待测试</span></li>
+                <li><span class="code">Alt+H</span> 悬停预览 <span class="status pending">待测试</span></li>
+            </ul>
+            
+            <p><strong>测试方法:</strong></p>
+            <ol>
+                <li>在Twitter页面按下各个快捷键</li>
+                <li>观察是否有相应的功能响应</li>
+                <li>检查快捷键是否与其他扩展冲突</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>⚙️ 5. 设置功能测试</h3>
+            <ul class="checklist">
+                <li>主题切换功能正常 <span class="status pending">待测试</span></li>
+                <li>编程语言切换正常 <span class="status pending">待测试</span></li>
+                <li>项目名称自定义正常 <span class="status pending">待测试</span></li>
+                <li>媒体处理选项正常 <span class="status pending">待测试</span></li>
+                <li>设置能够正确保存 <span class="status pending">待测试</span></li>
+            </ul>
+            
+            <p><strong>测试步骤:</strong></p>
+            <ol>
+                <li>在弹出面板中展开设置区域</li>
+                <li>尝试修改各项设置</li>
+                <li>观察修改是否立即生效</li>
+                <li>重新打开面板检查设置是否保存</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h3>🐛 6. 错误处理测试</h3>
+            <ul class="checklist">
+                <li>在非Twitter页面的行为正确 <span class="status pending">待测试</span></li>
+                <li>网络错误时的处理正确 <span class="status pending">待测试</span></li>
+                <li>控制台没有错误信息 <span class="status pending">待测试</span></li>
+                <li>内存使用量正常 <span class="status pending">待测试</span></li>
+            </ul>
+            
+            <p><strong>测试方法:</strong></p>
+            <ol>
+                <li>在其他网站测试扩展行为</li>
+                <li>断网后测试扩展稳定性</li>
+                <li>打开开发者工具检查控制台</li>
+                <li>检查浏览器任务管理器中的内存使用</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 注意事项:</strong>
+            <ul>
+                <li>测试前请确保已登录Twitter账户</li>
+                <li>建议在隐私模式下测试，避免其他扩展干扰</li>
+                <li>如果发现问题，请记录详细的重现步骤</li>
+                <li>测试完成后可以将结果反馈给开发团队</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 测试结果总结</h3>
+            <p>完成所有测试后，请在此记录总体评价：</p>
+            <ul class="checklist">
+                <li>所有核心功能正常工作 <span class="status pending">待评价</span></li>
+                <li>用户界面响应流畅 <span class="status pending">待评价</span></li>
+                <li>没有明显的性能问题 <span class="status pending">待评价</span></li>
+                <li>扩展稳定可靠 <span class="status pending">待评价</span></li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://github.com/your-username/vs-tweet-theme" class="button" target="_blank">
+                🐛 报告问题
+            </a>
+            <a href="https://github.com/your-username/vs-tweet-theme/discussions" class="button secondary" target="_blank">
+                💬 分享反馈
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
+            VS Tweet Theme v1.0.0 - 让摸鱼更专业 😎
+        </div>
+    </div>
+
+    <script>
+        // 简单的交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 点击checklist项目时切换状态
+            const checklistItems = document.querySelectorAll('.checklist li');
+            
+            checklistItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const status = this.querySelector('.status');
+                    
+                    if (status.classList.contains('pending')) {
+                        status.classList.remove('pending');
+                        status.classList.add('success');
+                        status.textContent = '✅ 通过';
+                        this.style.backgroundColor = '#d4edda';
+                    } else if (status.classList.contains('success')) {
+                        status.classList.remove('success');
+                        status.classList.add('error');
+                        status.textContent = '❌ 失败';
+                        this.style.backgroundColor = '#f8d7da';
+                    } else {
+                        status.classList.remove('error');
+                        status.classList.add('pending');
+                        status.textContent = '待测试';
+                        this.style.backgroundColor = 'white';
+                    }
+                });
+            });
+
+            // 显示欢迎信息
+            console.log('🎨 VS Tweet Theme 测试页面已加载');
+            console.log('点击测试项目可以标记测试状态');
+        });
+    </script>
+</body>
+</html> 
